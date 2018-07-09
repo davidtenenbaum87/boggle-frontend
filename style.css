@@ -1,0 +1,16 @@
+.row  {
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+.col {
+    border: 1px solid #eee;
+    text-align: center;
+    line-height: 10px;
+    font-size: 28px;
+    background-color: tomato;
+    color: white;
+    padding: 0;
+}
