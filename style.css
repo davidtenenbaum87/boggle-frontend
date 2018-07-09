@@ -8,9 +8,9 @@
 .col {
     border: 1px solid #eee;
     text-align: center;
-    line-height: 10px;
-    font-size: 28px;
-    background-color: tomato;
+    line-height: 28px;
+    font-size: 10px;
+    background-color: #ffb6c1;
     color: white;
     padding: 0;
 }
