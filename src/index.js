@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const boxes = document.getElementsByClassName('box')
   const newBoardButton = document.getElementById('new-board-button')
+  const wordList = document.getElementById('wordList')
+  const foundWords = [];
+  const possibleWords = []
 
-
+// event listener for creating a new board
   newBoardButton.addEventListener('click', function() {
     const newBoard = populateBoard()
-    foundWords = [];
     wordList.innerHTML = ""
     let i = 0;
     Array.from(boxes).forEach(function(box) {
@@ -20,6 +22,15 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(data => parseData(data))
   })
 
+// parsing the data from the api
+  function parseData(data) {
+    data.forEach(function(word) {
+      possibleWords.push(word);
+    })
+    console.log(possibleWords)
+  }
+
+// populating the new letter for the new board
   function populateBoard() {
     const board = []
     for (let i = 0; i < 16; i++){
@@ -28,39 +39,29 @@ document.addEventListener('DOMContentLoaded', function() {
     return board;
   }
 
-  function parseData(data) {
-    const possibleWords = []
-    data.forEach(function(word) {
-      possibleWords.push(word);
-    })
-    console.log(possibleWords)
-  }
-
-
-foundWords = []
-
 //adds event listener to enter word guesses
   const wordInput = document.getElementById('wordInput')
-  wordInput.addEventListener('keypress', function (e) {
-    var key = e.which || e.keyCode;
+  wordInput.addEventListener('keypress', function (event) {
+    var key = event.which || event.keyCode;
     if (key === 13) {
-      foundWords.push(e.target.value)
-      const wordList = document.getElementById('wordList')
-      wordList.innerHTML += `<li> ${e.target.value} </li>`
-      e.target.value = ""
+      foundWords.push(event.target.value)
+      checkWord(event.target.value)
+      event.target.value = ""
     }
   });
 
-  function checkWords() {
-    const allWords = parseData(data)
-    // debugger;
-    foundWords.filter(function(word){
-      console.log(possibleWords.includes(word))
+// adding the words to the HTML
+  function addWordToList(word) {
+    wordList.innerHTML += `<li> ${word} </li>`
+  }
 
-    })
+
+  function checkWord(word) {
+    if (possibleWords.includes(word.toUpperCase())) {
+      addWordToList(word)
+    } else {
+      console.log("not a word")
+    }
   };
-  // debugger
-
-
 
 });
