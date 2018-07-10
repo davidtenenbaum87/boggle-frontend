@@ -9,22 +9,10 @@ for (let i = 0; i < 16; i++){
   gameArray.push(possibleLetters[Math.floor(Math.random()*possibleLetters.length)]);
 }
 
-// const box0 = document.getElementById('box0')
-// const box1 = document.getElementById('box1')
-// const box2 = document.getElementById('box2')
-// const box3 = document.getElementById('box3')
-// const box4 = document.getElementById('box4')
-// const box5 = document.getElementById('box5')
-// const box6 = document.getElementById('box6')
-// const box7 = document.getElementById('box7')
-// const box8 = document.getElementById('box8')
-// const box9 = document.getElementById('box9')
-// const box10 = document.getElementById('box10')
-// const box11 = document.getElementById('box11')
-// const box12 = document.getElementById('box12')
-// const box13 = document.getElementById('box13')
-// const box14 = document.getElementById('box14')
-// const box15 = document.getElementById('box15')
+gameString = gameArray.join("");
+
+
+
 const boxes = document.getElementsByClassName('box')
 function startNewGame(){
   populateBoard()
@@ -38,7 +26,26 @@ function populateBoard() {
   })
 }
 
+const wordsDiv = document.getElementById('words')
 
+displayWords = (words) => {
+  words.forEach( word => {
+    wordsDiv.innerHTML += `<div><li>${word}</li></div>`
+  })
+}
+solverURL = "http://api.codebox.org.uk/boggle"
+function showWords() {
+    fetch(`${solverURL}/${gameString}` , {
+      method: 'GET',
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+  }).then(response => response.json())
+  // .then(json => {console.log(json)
+  // })
+}
+showWords();
 
 
 
