@@ -2,63 +2,60 @@
 <html lang="en" dir="ltr">
   <head>
     <title>Boggle</title>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Caudex|Faster+One|Londrina+Outline|Megrim|Nixie+One|Syncopate" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
 
   </head>
   <body>
     <div class="wrapper">
-    <div class="board">
+    <div class="board" id="board">
       <div class="boggle-row one">
-        <div class="box" id="1">1</div>
-        <div class="box" id="2">2</div>
-        <div class="box" id="3">3</div>
-        <div class="box" id="4">4</div>
+        <div class="box" id="1" data-value="" data-action="unused"></div>
+        <div class="box" id="2" data-value="" data-action="unused"></div>
+        <div class="box" id="3" data-value="" data-action="unused"></div>
+        <div class="box" id="4" data-value="" data-action="unused"></div>
       </div>
       <div class="boggle-row">
-        <div class="box" id="5">5</div>
-        <div class="box" id="6">6</div>
-        <div class="box" id="7">7</div>
-        <div class="box" id="8">8</div>
+        <div class="box" id="5" data-value="" data-action="unused"></div>
+        <div class="box" id="6" data-value="" data-action="unused"></div>
+        <div class="box" id="7" data-value="" data-action="unused"></div>
+        <div class="box" id="8" data-value="" data-action="unused"></div>
       </div>
       <div class="boggle-row three">
-        <div class="box" id="9">9</div>
-        <div class="box" id="10">10</div>
-        <div class="box" id="11">11</div>
-        <div class="box" id="12">12</div>
+        <div class="box" id="9" data-value="" data-action="unused"></div>
+        <div class="box" id="10" data-value="" data-action="unused"></div>
+        <div class="box" id="11" data-value="" data-action="unused"></div>
+        <div class="box" id="12" data-value="" data-action="unused"></div>
       </div>
       <div class="boggle-row four">
-        <div class="box" id="13">13</div>
-        <div class="box" id="14">14</div>
-        <div class="box" id="15">15</div>
-        <div class="box" id="16">16</div>
+        <div class="box" id="13" data-value="" data-action="unused"></div>
+        <div class="box" id="14" data-value="" data-action="unused"></div>
+        <div class="box" id="15" data-value="" data-action="unused"></div>
+        <div class="box" id="16" data-value="" data-action="unused"></div>
       </div>
     </div>
   </div>
 
-    <div id='container-text' class="">
-      <div class="test">
-        <div class="">
-          hello
-        </div>
-      </div>
+  <!-- <button class="ui positive basic button"type="button" id="new-board-button" name="button">new board</button> -->
 
-      <div class="test2">
-        <div class="">
-          hello again
-        </div>
-      </div>
-    </div>
+  <button class="btn waves-effect waves-light" id="new-board-button" type="button" 
+    <i class="material-icons right">New Board</i>
+  </button>
 
 
+    <script src="src/solve.js">
+
+    </script>
     <script src="src/index.js"></script>
   </body>
 </html>
