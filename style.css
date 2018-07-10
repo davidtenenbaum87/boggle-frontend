@@ -24,5 +24,11 @@
 }
 
 .test {
-  clear: both;
+  position: fixed;
+  bottom: 10%;
+}
+
+.test2 {
+  position: fixed;
+  bottom: 0%;
 }
