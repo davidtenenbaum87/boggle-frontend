@@ -41,3 +41,10 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.existing-words {
+  position: fixed;
+  top: 10%;
+  left: 30%;
+  background-color: green
+}
