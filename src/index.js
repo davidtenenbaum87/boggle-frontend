@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   newBoardButton.addEventListener('click', function() {
     const newBoard = populateBoard()
-
+    foundWords = [];
+    wordList.innerHTML = ""
     let i = 0;
     Array.from(boxes).forEach(function(box) {
       box.innerText = newBoard[i];
@@ -35,6 +36,30 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(possibleWords)
   }
 
+
+foundWords = []
+
+//adds event listener to enter word guesses
+  const wordInput = document.getElementById('wordInput')
+  wordInput.addEventListener('keypress', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 13) {
+      foundWords.push(e.target.value)
+      const wordList = document.getElementById('wordList')
+      wordList.innerHTML += `<li> ${e.target.value} </li>`
+      e.target.value = ""
+    }
+  });
+
+  function checkWords() {
+    const allWords = parseData(data)
+    // debugger;
+    foundWords.filter(function(word){
+      console.log(possibleWords.includes(word))
+
+    })
+  };
+  // debugger
 
 
 

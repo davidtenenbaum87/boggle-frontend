@@ -31,5 +31,13 @@
   margin-top: 20px;
   background-color: #2962ff;
   font-family: 'Caudex', serif;
+}
 
+
+#wordInput {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
 }
