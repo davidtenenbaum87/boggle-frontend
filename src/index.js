@@ -25,7 +25,7 @@ for (let i = 0; i < 16; i++){
 // const box13 = document.getElementById('box13')
 // const box14 = document.getElementById('box14')
 // const box15 = document.getElementById('box15')
-const boxes = document.getElementsByClassName('col')
+const boxes = document.getElementsByClassName('box')
 function startNewGame(){
   populateBoard()
 }

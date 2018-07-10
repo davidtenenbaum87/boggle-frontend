@@ -1,16 +1,22 @@
-.row  {
-    width: 25%;
-    margin-left: auto;
-    left: auto;
-    right: auto;
+.board {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  width: 440px;
+  margin: auto;
+  margin-top: 50px;
 }
 
-.col {
-    border: 1px solid #eee;
-    text-align: center;
-    line-height: 28px;
-    font-size: 10px;
-    background-color: #ffb6c1;
-    color: white;
-    padding: 0;
+.boggle-row {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.box {
+  background-color: #bbdefb;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
