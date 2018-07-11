@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const wordList = document.getElementById('word-list')
   const scoreBox = document.getElementById('score')
   const timer = document.getElementById('timer')
+  const usersURL = "http://localhost:3000/api/v1/users"
+  const scoresURL = "http://localhost:3000/api/v1/scores"
 
 
   const foundWords = [];
@@ -104,6 +106,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function endGame(){
     alert("GAME OVER")
+    getUsersFromAPI(score)
+  }
+
+  function getUsersFromAPI(score) {
+    var userName = prompt("What's your name?")
+    fetch(usersURL, {
+      "Access-Control-Allow-Origin": "*"
+    })
+    .then(res => res.json())
+    .then(data => checkForUser(data, userName))
+
+  }
+
+  function checkForUser(users, userName) {
+    users.find(function(user) {
+      if (user.name === userName) {
+        return postHighScore(user)
+      }
+    })
+
+    return createUser(userName);
+
+  }
+
+  function postHighScore(user) {
+    const scoreObj = {
+      method: "POST",
+      headers: {
+        'Content-type':'application/json'
+      },
+      body: JSON.stringify({ user_id: user.id, score: score})
+    }
+    fetch(scoresURL, scoreObj);
+  }
+
+  function createUser(userName) {
+    debugger;
+    const userObj = {
+      method: "POST",
+      headers: {
+        'Content-type':'application/json'
+      },
+      body: JSON.stringify({ name: userName })
+    }
+    fetch(usersURL, userObj)
+      .then(res => res.json())
+      .then(data => postHighScore(data));
   }
 
 function countdown(){
