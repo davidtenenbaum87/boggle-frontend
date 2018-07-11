@@ -57,8 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //adds event listener to enter word guesses
   const wordInput = document.getElementById('word-input')
   wordInput.addEventListener('keypress', function (event) {
-    var key = event.which || event.keyCode;
-    if (key === 13) {
+    if (event.keyCode === 13) {
       foundWords.push(event.target.value)
       checkWord(event.target.value)
       event.target.value = ""
@@ -104,6 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
     scoreBox.innerText = `Score: ${score}`
   }
 
+  function endGame(){
+    alert("GAME OVER")
+  }
 
 function countdown(){
   let startingTime = 10;
@@ -114,17 +116,12 @@ function countdown(){
       timer.innerText = startingTime
     }
     else {
-      endGame(score)
+      endGame()
       clearInterval(gameCountdown)
       timer.innerText = "GAME OVER"
     }
   }, 1000)
 }
-
-function endGame(score){
-
-}
-
 
 
 });
