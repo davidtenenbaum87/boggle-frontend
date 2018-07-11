@@ -2,21 +2,28 @@ document.addEventListener('DOMContentLoaded', function() {
   const possibleLetters = ["R", "I", "F", "O", "B", "X", "I", "F", "E", "H", "E", "Y", "D", "E", "N", "O", "W", "S", "U", "T", "O", "K", "N", "D", "H", "M", "S", "R", "A", "O", "L", "U", "P", "E", "T", "S", "A", "C", "I", "T", "O", "A", "Y", "L", "G", "K", "U", "E", "Q", "B", "M", "J", "O", "A", "E", "H", "I", "S", "P", "N", "V", "E", "T", "I", "G", "N", "B", "A", "L", "I", "Y", "T", "E", "Z", "A", "V", "N", "D", "R", "A", "L", "E", "S", "C", "U", "W", "I", "L", "R", "G", "P", "A", "C", "E", "M", "D"]
 
   const boxes = document.getElementsByClassName('box')
+  const highScoresButton = document.getElementById('high-scores-button')
   const newBoardButton = document.getElementById('new-board-button')
-  const wordList = document.getElementById('wordList')
+  const wordList = document.getElementById('word-list')
   const scoreBox = document.getElementById('score')
+  const timer = document.getElementById('timer')
+
 
   const foundWords = [];
   const possibleWords = []
   let score = 0;
 
+  // highScoresButton.addEventListener('click', function() {
+  //   debugger;
+  // })
+
 // event listener for creating a new board
   newBoardButton.addEventListener('click', function() {
     const newBoard = populateBoard()
-    document.getElementById('timer').innerHTML =
-      03 + ":" + 00;
+    timer.innerHTML = 03 + ":" + 01;
     score = 0;
     displayScore()
+    startTimer()
     wordList.innerHTML = ""
     let i = 0;
     Array.from(boxes).forEach(function(box) {
@@ -41,13 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function populateBoard() {
     const board = []
     for (let i = 0; i < 16; i++){
-      board.push(possibleLetters[Math.floor(Math.random()*possibleLetters.length)]);
+      board.push(possibleLetters[Math.floor(Math.random()*possibleLetters.length)]);``
     }
     return board;
   }
 
 //adds event listener to enter word guesses
-  const wordInput = document.getElementById('wordInput')
+  const wordInput = document.getElementById('word-input')
   wordInput.addEventListener('keypress', function (event) {
     var key = event.which || event.keyCode;
     if (key === 13) {
@@ -96,9 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     scoreBox.innerText = `Score: ${score}`
   }
 
-document.getElementById('timer').innerHTML =
-  03 + ":" + 00;
-startTimer();
+
 
 function startTimer() {
   var presentTime = document.getElementById('timer').innerHTML;

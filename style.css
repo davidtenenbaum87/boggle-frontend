@@ -1,12 +1,19 @@
+body {
+  background-color: #fff59d;
+}
+
+.wrapper {
+  /* overflow: hidden */
+}
+
 .board {
   text-align: center;
   vertical-align: middle;
-  /* line-height: 90px; */
-  width: 440px;
+  width: 580px;
   margin: auto;
-  margin-top: 50px;
+  margin-top: -800px;
   font-family: 'Caudex', serif;
-  font-size: 18px;
+  font-size: 30px;
 }
 
 .boggle-row {
@@ -15,7 +22,8 @@
 }
 
 .box {
-  background-color: #bbdefb;
+  background-color: #4fc3f7;
+  color: black;
   line-height: 90px;
   width: 100px;
   height: 100px;
@@ -24,27 +32,87 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#new-board-button {
+.buttons {
   display: flex;
   justify-content: center;
   margin: 0 auto;
   margin-top: 20px;
-  background-color: #2962ff;
-  font-family: 'Caudex', serif;
+  margin-bottom: 10px;
+  font-family: 'Cormorant Upright', serif;
+  font-size: 30px;
 }
 
 
-#wordInput {
-  width: 200px;
+#new-board-button {
+  margin: 6px;
+  background-color: #2962ff;
+}
+
+#high-scores-button {
+  margin: 6px;
+  background-color: #2962ff;
+}
+
+#word-input {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  text-align: center;
+  margin-top: 10px;
+  width: 280px;
+  font-family: 'Caudex', serif;
+  font-size: 20px;
+
 }
 
 .existing-words {
-  position: fixed;
+  /* position: fixed; */
+  display: flex;
+  justify-content: center;
+  align-self: auto
+  position: absolute;
+  width: 300px;
+  height: 800px;
+  margin-top: 5px;
+  margin-left: 950px;
+
+  /* margin-top: 50px;
+  margin-right: 20px; */
+}
+
+#correct-words {
+  font-size: 30px;
+  font-family: 'Kranky', cursive;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
   top: 10%;
-  left: 30%;
-  background-color: green
+  font-size: 30px;
+  font-family: 'Caudex', serif;
+}
+
+#score {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 30px;
+  font-family: 'Caudex', serif;
+}
+
+#word-list {
+  font-size: 30px;
+  font-family: 'Bangers', cursive;
+  color: green;
+  position: relative;
+  margin: auto;
+}
+
+#boggle-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: 80px;
+  font-family: 'Faster One', cursive;
+  color: #f50057;
 }

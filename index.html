@@ -3,7 +3,11 @@
   <head>
     <title>Boggle</title>
     <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Caudex|Faster+One|Londrina+Outline|Megrim|Nixie+One|Syncopate" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Caudex|Cormorant+Upright|Faster+One|Londrina+Outline|Megrim|Nixie+One|Playfair+Display+SC|Poiret+One|Syncopate|Love+Ya+Like+A+Sister|Kranky" rel="stylesheet">
+
+
+
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
 
@@ -17,7 +21,16 @@
 
   </head>
   <body>
+    <div id="boggle-header">Boggle</div>
+
+    </div>
     <div class="wrapper">
+      <div class="existing-words">
+        <h4 id="correct-words">My Words:</h4>
+        <ul id="word-list"></ul>
+      </div>
+    
+
     <div class="board" id="board">
       <div class="boggle-row one">
         <div class="box" id="1" data-value="" data-action="unused"></div>
@@ -45,20 +58,25 @@
       </div>
     </div>
 
-    <div class="existing-words">
-      <ul id="wordList">
 
-      </ul>
-    </div>
+
   </div>
+  <div class="row">
+
+  <div class="buttons">
+    <button class="btn waves-effect waves-light" id="new-board-button" type="button"
+      <i class="material-icons right">New Board</i>
+    </button><br>
+    <button class="btn waves-effect waves-light" id="high-scores-button" type="button"
+      <i class="material-icons right">High Scores</i>
+    </button><br>
+  </div>
+</div>
 
 
-  <button class="btn waves-effect waves-light" id="new-board-button" type="button"
-    <i class="material-icons right">New Board</i>
-  </button><br>
-
-  <div class="ui input" id="wordInput">
-    <input type="text" placeholder="Enter words here">
+  <div class="ui search" id="word-input">
+    <input class="prompt" type="text" placeholder="Type a word...">
+    <div class="results"></div>
   </div>
 
   <div id="score">
@@ -68,8 +86,6 @@
   <div id="timer">
 
   </div>
-
-
 
     </script>
     <script src="src/index.js"></script>
