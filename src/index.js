@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   const foundWords = [];
-  const possibleWords = []
+  let possibleWords = []
   let score = 0;
 
   // highScoresButton.addEventListener('click', function() {
@@ -67,15 +67,14 @@ document.addEventListener('DOMContentLoaded', function() {
 // checking if the input word exists in the api
   function checkWord(word) {
     const currentWord = word.toUpperCase();
-    const correctWords = []
+    const correctWords = [];
     if (possibleWords.includes(currentWord)) {
-      if (!correctWords.includes(currentWord)) {
-        correctWords.push(currentWord);
-        addWordToList(word);
-        keepScore(currentWord);
-      }
+      correctWords.push(currentWord);
+      possibleWords = possibleWords.filter(word => { return word !== currentWord} )
+      addWordToList(word);
+      keepScore(currentWord);
     } else {
-      console.log("not a word")
+      alert('word does not exist or has been alreay found!')
     }
   };
 
