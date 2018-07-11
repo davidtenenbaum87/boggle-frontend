@@ -20,10 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // event listener for creating a new board
   newBoardButton.addEventListener('click', function() {
     const newBoard = populateBoard()
-    timer.innerHTML = 03 + ":" + 01;
+    // timer.innerHTML = 03 + ":" + 01;
     score = 0;
     displayScore()
-    startTimer()
+    countdown()
+    // startTimer()
     wordList.innerHTML = ""
     let i = 0;
     Array.from(boxes).forEach(function(box) {
@@ -104,57 +105,25 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-
-function startTimer() {
-  var presentTime = document.getElementById('timer').innerHTML;
-  var timeArray = presentTime.split(/[:]+/);
-  var m = timeArray[0];
-  var s = checkSecond((timeArray[1] - 1));
-  if(s==59){m=m-1}
-  //if(m<0){alert('timer completed')}
-
-  document.getElementById('timer').innerHTML =
-    m + ":" + s;
-  setTimeout(startTimer, 1000);
+function countdown(){
+  let startingTime = 10;
+  timer.innerText = startingTime;
+  let gameCountdown = setInterval(function(){
+    startingTime--;
+    if (startingTime > 0){
+      timer.innerText = startingTime
+    }
+    else {
+      endGame(score)
+      clearInterval(gameCountdown)
+      timer.innerText = "GAME OVER"
+    }
+  }, 1000)
 }
 
-function checkSecond(sec) {
-  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
-  if (sec < 0) {sec = "59"};
-  return sec;
+function endGame(score){
+
 }
-
-
-
-
-
-//   function setTimer() {
-//     timer = ({ timer }) => {
-//
-//     const minute = () => {
-//      return Math.floor(timer / 60)
-//     }
-//
-//  const second = () => {
-//    let s = timer % 60;
-//    return (s<10) ? `0${s}` : s
-//  }
-//
-//  return(
-//    <div className="boggle-timer">
-//      <div id="hour-glass">
-//        <div id="glass"></div>
-//        <div id="sand-stream"></div>
-//        <div id="top-sand"></div>
-//        <div id="bottom-sand"></div>
-//      </div>
-//    </div>
-//  )
-//
-// }
-//
-// export default Timer;
-//   }
 
 
 
