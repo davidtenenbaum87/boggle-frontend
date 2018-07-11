@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const possibleLetters = ["R", "I", "F", "O", "B", "X", "I", "F", "E", "H", "E", "Y", "D", "E", "N", "O", "W", "S", "U", "T", "O", "K", "N", "D", "H", "M", "S", "R", "A", "O", "L", "U", "P", "E", "T", "S", "A", "C", "I", "T", "O", "A", "Y", "L", "G", "K", "U", "E", "Q", "B", "M", "J", "O", "A", "E", "H", "I", "S", "P", "N", "V", "E", "T", "I", "G", "N", "B", "A", "L", "I", "Y", "T", "E", "Z", "A", "V", "N", "D", "R", "A", "L", "E", "S", "C", "U", "W", "I", "L", "R", "G", "P", "A", "C", "E", "M", "D"]
 
   const boxes = document.getElementsByClassName('box')
-  const highScoresButton = document.getElementById('high-scores-button')
+  // const highScoresButton = document.getElementById('high-scores-button')
   const newBoardButton = document.getElementById('new-board-button')
   const wordList = document.getElementById('word-list')
   const scoreBox = document.getElementById('score')
@@ -22,11 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // event listener for creating a new board
   newBoardButton.addEventListener('click', function() {
     const newBoard = populateBoard()
-    // timer.innerHTML = 03 + ":" + 01;
     score = 0;
     displayScore()
     countdown()
-    // startTimer()
     wordList.innerHTML = ""
     let i = 0;
     Array.from(boxes).forEach(function(box) {
@@ -51,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function populateBoard() {
     const board = []
     for (let i = 0; i < 16; i++){
-      board.push(possibleLetters[Math.floor(Math.random()*possibleLetters.length)]);``
+      board.push(possibleLetters[Math.floor(Math.random()*possibleLetters.length)]);
     }
     return board;
   }
@@ -85,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
       wordList.innerHTML += `<li> ${word} </li>`
     }
 
+// keeping count of current score
   function keepScore(word) {
     if (word.length < 5) {
       score += 1;
@@ -100,15 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
     displayScore()
   }
 
+// displaying current score
   function displayScore() {
     scoreBox.innerText = `Score: ${score}`
   }
 
-  function endGame(){
-    alert("GAME OVER")
-    getUsersFromAPI(score)
-  }
 
+// get request from users api, invoking a function to check for existing/new users
   function getUsersFromAPI(score) {
     var userName = prompt("What's your name?")
     fetch(usersURL, {
@@ -119,17 +116,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   }
 
+// checking if user exist in API. If true, post new score. else create new user.
   function checkForUser(users, userName) {
     users.find(function(user) {
       if (user.name === userName) {
         return postHighScore(user)
       }
     })
-
     return createUser(userName);
-
   }
 
+// post request to post a new score for user.
   function postHighScore(user) {
     const scoreObj = {
       method: "POST",
@@ -141,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(scoresURL, scoreObj);
   }
 
+// creating a new user in API. then calling on the post high score for the newly created user.
   function createUser(userName) {
     debugger;
     const userObj = {
@@ -155,21 +153,33 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(data => postHighScore(data));
   }
 
-function countdown(){
-  let startingTime = 10;
-  timer.innerText = startingTime;
-  let gameCountdown = setInterval(function(){
-    startingTime--;
-    if (startingTime > 0){
-      timer.innerText = startingTime
+// countdown
+  function countdown(){
+    let startingTime = 3;
+    timer.innerText = startingTime;
+    let gameCountdown = setInterval(function(){
+      startingTime--;
+      if (startingTime === -1){
+        timer.innerText = startingTime
+        clearInterval(gameCountdown)
+        endGame()
+      } else if (startingTime <= 10) {
+        timer.style.color = 'red';
+        timer.innerText = startingTime
+      } else {
+        timer.innerText = startingTime
+        // clearInterval(gameCountdown)
+
+      }
+    }, 1000)
+  }
+
+  // end of game function
+    function endGame() {
+      timer.innerHTML = `<i class="material-icons">pan_tool GAME OVER pan_tool</i>`
+      alert("GAME OVER")
+      getUsersFromAPI(score)
     }
-    else {
-      endGame()
-      clearInterval(gameCountdown)
-      timer.innerText = "GAME OVER"
-    }
-  }, 1000)
-}
 
 
 });
