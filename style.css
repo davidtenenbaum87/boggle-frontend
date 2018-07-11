@@ -3,7 +3,8 @@ body {
 }
 
 .wrapper {
-  /* overflow: hidden */
+  display: flex;
+  flex-direction: column;
 }
 
 .board {
@@ -22,7 +23,7 @@ body {
 }
 
 .box {
-  background-color: #4fc3f7;
+  background-color: #eeeeee;
   color: black;
   line-height: 90px;
   width: 100px;
@@ -30,6 +31,7 @@ body {
   padding: 5px;
   margin: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 15px;
 }
 
 .buttons {
@@ -65,18 +67,23 @@ body {
 }
 
 .existing-words {
-  /* position: fixed; */
-  display: flex;
+  justify-content: center;
+  align-self: auto
+  position: absolute;
+  width: 500px;
+  height: 800px;
+  margin-top: 5px;
+  margin-left: 1400px;
+}
+
+.highscores {
   justify-content: center;
   align-self: auto
   position: absolute;
   width: 300px;
   height: 800px;
   margin-top: 5px;
-  margin-left: 950px;
-
-  /* margin-top: 50px;
-  margin-right: 20px; */
+  margin-left: 100px;
 }
 
 #correct-words {
@@ -115,4 +122,9 @@ body {
   font-size: 80px;
   font-family: 'Faster One', cursive;
   color: #f50057;
+}
+
+#high-scores-header {
+  font-size: 30px;
+  font-family: 'Pacifico', cursive;
 }

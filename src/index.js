@@ -24,8 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const newBoard = populateBoard()
     score = 0;
     displayScore()
+    // getHighScores()
     countdown()
     wordList.innerHTML = ""
+    highScoreTable.innerHTML = "";
     let i = 0;
     Array.from(boxes).forEach(function(box) {
       box.innerText = newBoard[i];
@@ -118,13 +120,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // checking if user exist in API. If true, post new score. else create new user.
   function checkForUser(users, userName) {
-    users.find(function(user) {
-      if (user.name === userName) {
-        return postHighScore(user)
+    const result = users.find( user => user.name === userName );
+    // debugger;
+      if (result) {
+        return postHighScore(result)
+      }else {
+        return createUser(userName);
       }
-    })
-    return createUser(userName);
-  }
+    }
+
 
 // post request to post a new score for user.
   function postHighScore(user) {
@@ -140,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // creating a new user in API. then calling on the post high score for the newly created user.
   function createUser(userName) {
-    debugger;
     const userObj = {
       method: "POST",
       headers: {
@@ -155,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // countdown
   function countdown(){
-    let startingTime = 3;
+    let startingTime = 60;
     timer.innerText = startingTime;
     let gameCountdown = setInterval(function(){
       startingTime--;
@@ -179,7 +182,63 @@ document.addEventListener('DOMContentLoaded', function() {
       timer.innerHTML = `<i class="material-icons">pan_tool GAME OVER pan_tool</i>`
       alert("GAME OVER")
       getUsersFromAPI(score)
+      getHighScores();
     }
+
+    function getHighScores(){
+      fetch(scoresURL, {
+        "Access-Control-Allow-Origin": "*"
+      })
+      .then(res => res.json())
+      .then(data => parseScores(data))
+    }
+
+    function parseScores(data) {
+      let sortedScores = data.sort((a, b) => b.score - a.score);
+      let topTen = sortedScores.slice(0,10)
+      topTen.forEach(function(score) {
+        displayUserScoreHTML(score);
+      })
+    }
+
+    const highScoreTable = document.getElementById('high-scores-table')
+
+    function displayUserScoreHTML(score) {
+      highScoreTable.innerHTML += generateScoreHTML(score)
+    }
+
+    function generateScoreHTML(score) {
+      return `
+        <tr>
+          <td>${score.user.name}</td>
+          <td>${score.score}</td>
+        </tr>
+      `
+    }
+
+    // function getUserName(score) {
+    //   const userId = score.user_id
+    //   fetch(usersURL, {
+    //     "Access-Control-Allow-Origin": "*"
+    //   })
+    //   .then(res => res.json())
+    //   .then(data => data.find(function(user) { return user.id === userId }))
+    //   .then(data => {return data.name})
+    //
+    // }
+    // function getUserNameFromAPI(score) {
+    //   const userId = score.user_id
+    //   fetch(usersURL, {
+    //     "Access-Control-Allow-Origin": "*"
+    //   })
+    //   .then(res => res.json())
+    //   .then(data => data.find(user => user.id === userId))
+    //   .then(data => generateScoreHTML(data))
+    // }
+
+    // function findUserName(users) {
+    //
+    // }
 
 
 });
