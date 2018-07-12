@@ -1,5 +1,5 @@
 body {
-  background-color: #fff59d;
+  background-color: #e9ff70;
 }
 
 .container {
@@ -29,7 +29,7 @@ body {
 }
 
 .box {
-  background-color: #e0e0e0;
+  background-color: #f3e5f5;
   color: black;
   line-height: 90px;
   width: 100px;
@@ -55,7 +55,7 @@ body {
   text-align: center;
   vertical-align: middle;
   margin: 6px;
-  background-color: #2962ff;
+  background-color: #70d6ff;
 }
 
 #word-input {
@@ -87,7 +87,7 @@ body {
 #correct-words {
   font-size: 40px;
   font-family: 'Pacifico', cursive;
-  color: #26c6da;
+  color: #ff70a6;
 }
 
 #timer {
@@ -95,7 +95,7 @@ body {
   justify-content: center;
   top: 10%;
   font-size: 40px;
-  font-family: 'Caudex', serif;
+  font-family: 'Pacifico', cursive;
 }
 
 #score {
@@ -103,13 +103,14 @@ body {
   justify-content: center;
   margin-top: 20px;
   font-size: 30px;
-  font-family: 'Caudex', serif;
+  font-family: 'Pacifico', cursive;
+  color: #ff70a6;
 }
 
 #word-list {
   font-size: 30px;
   font-family: 'Bangers', cursive;
-  color: green;
+  color: #ea80fc;
   position: relative;
   margin: auto;
 }
@@ -120,16 +121,21 @@ body {
   margin-top: 50px;
   font-size: 80px;
   font-family: 'Faster One', cursive;
-  color: #f50057;
+  color: #70d6ff;
 }
 
 #high-scores-header {
   font-size: 40px;
   font-family: 'Pacifico', cursive;
-  color: #26c6da;
+  color: #ff70a6;
   text-align: center;
 }
 
 th {
   text-align: center;
+}
+
+
+#inputBox {
+	background-color: #f3e5f5;
 }
