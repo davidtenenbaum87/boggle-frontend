@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inputBox.focus();
     wordList.innerHTML = ""
     highScoreTable.innerHTML = "";
+    highScoreTable.innerHTML = `<img src="hourglass2.gif">`
     // roll dice, creating new 16 letter game
     let i = 0;
     Array.from(boxes).forEach(function(box) {
@@ -121,13 +122,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // calculates and displays the countdown
   function countdown() {
-    let startingTime = 30;
+    let startingTime = 60;
     timer.innerText = startingTime;
     let gameCountdown = setInterval(function(){
       startingTime--;
       if (startingTime === -1){
         timer.innerText = startingTime
         clearInterval(gameCountdown)
+        highScoreTable.innerHTML = ""
         endGame()
       } else if (startingTime <= 10) {
         timer.style.color = 'red';
@@ -143,12 +145,13 @@ document.addEventListener('DOMContentLoaded', function() {
       timer.innerHTML = `<i class="material-icons">pan_tool GAME OVER pan_tool</i>`
       alert("GAME OVER")
       getUsersFromAPI(score)
-      // getHighScores();
     }
+
     // GET request from users api, invoking a function to check for existing/new users
     function getUsersFromAPI(score) {
       var userName = prompt("What's your name?")
       addUserScoreToArray(userName, score)
+
       fetch(usersURL, {
         "Access-Control-Allow-Origin": "*"
       })
@@ -197,15 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       fetch(scoresURL, scoreObj);
     }
-
-    // function getHighScores(){
-    //   fetch(scoresURL, {
-    //     "Access-Control-Allow-Origin": "*"
-    //   })
-    //   .then(res => res.json())
-    //   .then(data => parseScores(data))
-    //   .then(console.log())
-    // }
 
     function parseScores(data) {
       let sortedScores = data.sort((a, b) => b.score - a.score);
