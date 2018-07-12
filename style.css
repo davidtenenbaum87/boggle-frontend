@@ -93,7 +93,8 @@ body {
 #timer {
   display: flex;
   justify-content: center;
-  top: 10%;
+  flex-direction: row;
+
   font-size: 40px;
   font-family: 'Pacifico', cursive;
 }
@@ -113,6 +114,7 @@ body {
   color: #ea80fc;
   position: relative;
   margin: auto;
+  column-count: 2;
 }
 
 #boggle-header {

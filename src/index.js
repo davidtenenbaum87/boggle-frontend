@@ -40,13 +40,21 @@ document.addEventListener('DOMContentLoaded', function() {
     inputBox.focus();
     wordList.innerHTML = ""
     highScoreTable.innerHTML = "";
-    highScoreTable.innerHTML = `<img src="hourglass2.gif">`
+    highScoreTable.innerHTML = `<img src="hourglass2.gif" class="hourglass">`
     // roll dice, creating new 16 letter game
     let i = 0;
     Array.from(boxes).forEach(function(box) {
       box.innerText = newBoard[i];
       i++;
+
     })
+    $('.box')
+      .transition('vertical flip')
+      .transition('horizontal flip')
+    ;
+    $('.hourglass')
+      .transition('fly right')
+    ;
 
     // calling the api with the newly created letter grid
     fetch(`http://api.codebox.org.uk/boggle/${newBoard.join("")}`)
@@ -122,14 +130,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // calculates and displays the countdown
   function countdown() {
-    let startingTime = 60;
+    let startingTime = 10;
     timer.innerText = startingTime;
     let gameCountdown = setInterval(function(){
       startingTime--;
-      if (startingTime === -1){
+      if (startingTime === -1) {
         timer.innerText = startingTime
         clearInterval(gameCountdown)
-        highScoreTable.innerHTML = ""
         endGame()
       } else if (startingTime <= 10) {
         timer.style.color = 'red';
@@ -142,9 +149,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // end of game function
     function endGame() {
+      $('.hourglass')
+        .transition('fly right')
+      ;
+
+      timer.style = "color:red; margin: auto; width: 13%; padding: 10px;"
+      $('.timer')
+        .transition('tada')
+      ;
+
       timer.innerHTML = `<i class="material-icons">pan_tool GAME OVER pan_tool</i>`
-      alert("GAME OVER")
-      getUsersFromAPI(score)
+      setTimeout(function() {
+
+        alert("GAME OVER")
+        getUsersFromAPI(score)
+      }, 500)
+
     }
 
     // GET request from users api, invoking a function to check for existing/new users
