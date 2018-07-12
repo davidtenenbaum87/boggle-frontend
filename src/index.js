@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // adding the words to the HTML
     function addWordToList(word) {
-      wordList.innerHTML += `<li> ${word} </li>`
+      wordList.innerHTML += `<li> ${word} <i class="material-icons">check</i></li>`
     }
 
 // keeping count of current score
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // countdown
   function countdown(){
-    let startingTime = 60;
+    let startingTime = 30;
     timer.innerText = startingTime;
     let gameCountdown = setInterval(function(){
       startingTime--;
@@ -196,6 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function parseScores(data) {
       let sortedScores = data.sort((a, b) => b.score - a.score);
       let topTen = sortedScores.slice(0,10)
+      highScoreTable.innerHTML = `<th>Rank</th><th>Name</th>
+      <th>High Score</th>`
       topTen.forEach(function(score) {
         displayUserScoreHTML(score);
       })
@@ -207,38 +209,19 @@ document.addEventListener('DOMContentLoaded', function() {
       highScoreTable.innerHTML += generateScoreHTML(score)
     }
 
+    var userCounter = 0;
+
     function generateScoreHTML(score) {
+      if (userCounter >= 10) {
+        userCounter = 0;
+      }
+      ++userCounter
       return `
         <tr>
+          <td>${userCounter}</td>
           <td>${score.user.name}</td>
           <td>${score.score}</td>
         </tr>
       `
     }
-
-    // function getUserName(score) {
-    //   const userId = score.user_id
-    //   fetch(usersURL, {
-    //     "Access-Control-Allow-Origin": "*"
-    //   })
-    //   .then(res => res.json())
-    //   .then(data => data.find(function(user) { return user.id === userId }))
-    //   .then(data => {return data.name})
-    //
-    // }
-    // function getUserNameFromAPI(score) {
-    //   const userId = score.user_id
-    //   fetch(usersURL, {
-    //     "Access-Control-Allow-Origin": "*"
-    //   })
-    //   .then(res => res.json())
-    //   .then(data => data.find(user => user.id === userId))
-    //   .then(data => generateScoreHTML(data))
-    // }
-
-    // function findUserName(users) {
-    //
-    // }
-
-
 });

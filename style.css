@@ -2,17 +2,24 @@ body {
   background-color: #fff59d;
 }
 
-.wrapper {
+.container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 1400px;
+
 }
 
 .board {
+  order: 2;
+  flex-grow: 2;
+  /* justify-content: space-between; */
+
+  flex-basis: auto;
   text-align: center;
   vertical-align: middle;
-  width: 580px;
-  margin: auto;
-  margin-top: -800px;
   font-family: 'Caudex', serif;
   font-size: 30px;
 }
@@ -23,7 +30,7 @@ body {
 }
 
 .box {
-  background-color: #eeeeee;
+  background-color: #e0e0e0;
   color: black;
   line-height: 90px;
   width: 100px;
@@ -37,20 +44,17 @@ body {
 .buttons {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  /* margin: 0 auto; */
   font-family: 'Cormorant Upright', serif;
   font-size: 30px;
 }
 
 
 #new-board-button {
-  margin: 6px;
-  background-color: #2962ff;
-}
-
-#high-scores-button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
   margin: 6px;
   background-color: #2962ff;
 }
@@ -63,32 +67,28 @@ body {
   width: 280px;
   font-family: 'Caudex', serif;
   font-size: 20px;
-
 }
 
 .existing-words {
-  justify-content: center;
-  align-self: auto
-  position: absolute;
-  width: 500px;
-  height: 800px;
-  margin-top: 5px;
-  margin-left: 1400px;
+  order: 3;
+  flex-grow: 1;
+  /* justify-content: space-between; */
+  flex-basis: auto;
+  width: 680px;
 }
 
 .highscores {
-  justify-content: center;
-  align-self: auto
-  position: absolute;
-  width: 300px;
-  height: 800px;
-  margin-top: 5px;
-  margin-left: 100px;
+  order: 1;
+  flex-grow: 1;
+  /* justify-content: space-between; */
+  flex-basis: auto;
+  width: 680px;
 }
 
 #correct-words {
-  font-size: 30px;
+  font-size: 40px;
   font-family: 'Pacifico', cursive;
+  color: #26c6da;
 }
 
 #timer {
@@ -125,6 +125,12 @@ body {
 }
 
 #high-scores-header {
-  font-size: 30px;
+  font-size: 40px;
   font-family: 'Pacifico', cursive;
+  color: #26c6da;
+  text-align: center;
+}
+
+th {
+  text-align: center;
 }

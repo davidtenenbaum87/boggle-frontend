@@ -26,7 +26,7 @@
     <div id="boggle-header">Boggle</div>
 
     </div>
-    <div class="wrapper">
+    <div class="container">
       <div class="existing-words">
         <h4 id="correct-words">My Words:</h4>
         <ul id="word-list"></ul>
@@ -38,8 +38,8 @@
           <table class="centered" id="high-scores-table">
             <thead>
               <tr>
-                  <th>Name</th>
-                  <th>High Score</th>
+                  <!-- <th>Name</th>
+                  <th>High Score</th> -->
               </tr>
             </thead>
 
@@ -83,12 +83,9 @@
   <div class="row">
 
   <div class="buttons">
-    <button class="btn waves-effect waves-light" id="new-board-button" type="button"
-      <i class="material-icons right">New Board</i>
-    </button><br>
-    <!-- <button class="btn waves-effect waves-light" id="high-scores-button" type="button"
-      <i class="material-icons right">High Scores</i>
-    </button><br> -->
+    <button class="btn waves-effect waves-light" id="new-board-button" type="button">
+      New Game  <i class="material-icons"> replay</i>
+    </button>
   </div>
 </div>
 
@@ -98,13 +95,10 @@
     <div class="results"></div>
   </div>
 
-  <div id="score">
+  <div id="score"></div>
 
-  </div>
+  <div id="timer"></div>
 
-  <div id="timer">
-
-  </div>
 
     </script>
     <script src="src/index.js"></script>
