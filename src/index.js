@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const newBoardButton = document.getElementById('new-board-button') // new game button
   const wordList = document.getElementById('word-list') // All the correctly guessed words div
   const highScoreTable = document.getElementById('high-scores-table') // high score table div
-  const wordInput = document.getElementById('word-input') // word input box
+  const wordInput = document.getElementById('word-input') // word input div
+  const inputBox = document.getElementById('inputBox') // word input box
   const scoreBox = document.getElementById('score') // The current game score
   const timer = document.getElementById('timer') // The timer
   const usersURL = "http://localhost:3000/api/v1/users" // users api
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displayScore()
     // getHighScores()
     countdown()
+    inputBox.focus();
     wordList.innerHTML = ""
     highScoreTable.innerHTML = "";
     // roll dice, creating new 16 letter game
