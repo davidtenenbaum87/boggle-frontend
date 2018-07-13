@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inputBox.focus();
     wordList.innerHTML = ""
     highScoreTable.innerHTML = "";
-    highScoreTable.innerHTML = `<img src="hourglass2.gif" class="hourglass">`
+    highScoreTable.innerHTML = `<img src="hourglass.gif" id="hourglass" class="hourglass">`
     // roll dice, creating new 16 letter game
     let i = 0;
     Array.from(boxes).forEach(function(box) {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .transition('horizontal flip')
     ;
     $('.hourglass')
-      .transition('fly right')
+      .transition('flash');
     ;
 
     // calling the api with the newly created letter grid
@@ -149,16 +149,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // end of game function
     function endGame() {
-      $('.hourglass')
-        .transition('fly right')
-      ;
+      const hourGlass = document.getElementById('hourglass') // hourglass gif
 
-      timer.style = "color:red; margin: auto; width: 13%; padding: 10px;"
+      hourGlass.remove();
+
+      timer.style = "color:red; margin: auto; width: 21%; padding: 10px;"
       $('.timer')
         .transition('tada')
       ;
 
-      timer.innerHTML = `<i class="material-icons">pan_tool GAME OVER pan_tool</i>`
+      timer.innerHTML = `<i id="game-over" class="material-icons">pan_tool GAME OVER pan_tool</i>`
       setTimeout(function() {
 
         alert("GAME OVER")
