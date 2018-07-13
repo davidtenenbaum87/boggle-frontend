@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // calculates and displays the countdown
   function countdown() {
-    let startingTime = 10;
+    let startingTime = 45;
     timer.innerText = startingTime;
     let gameCountdown = setInterval(function(){
       startingTime--;
@@ -139,8 +139,9 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(gameCountdown)
         endGame()
       } else if (startingTime <= 10) {
-        timer.style.color = 'red';
+        timer.style.fontSize = '60px'
         timer.innerText = startingTime
+
       } else {
         timer.innerText = startingTime
       }
@@ -153,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       hourGlass.remove();
 
-      timer.style = "color:red; margin: auto; width: 21%; padding: 10px;"
+      // timer.style = "margin: auto; width: 21%; padding: 10px;"
       $('.timer')
         .transition('tada')
       ;
