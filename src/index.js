@@ -37,8 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
     displayScore()
     // getHighScores()
     countdown()
+    inputBox.disabled = false;
+    inputBox.value = "";
     inputBox.focus();
-    wordList.innerHTML = ""
+    wordList.innerHTML = "";
     highScoreTable.innerHTML = "";
     highScoreTable.innerHTML = `<img src="hourglass.gif" id="hourglass" class="hourglass">`
     // roll dice, creating new 16 letter game
@@ -150,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // end of game function
     function endGame() {
+      inputBox.disabled = true;
       const hourGlass = document.getElementById('hourglass') // hourglass gif
 
       hourGlass.remove();
@@ -253,5 +256,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </tr>
       `
     }
+
 
 });
