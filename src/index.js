@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ;
 
     // calling the api with the newly created letter grid
-    fetch(`http://api.codebox.org.uk/boggle/${newBoard.join("")}`)
+    fetch(`https://api.codebox.org.uk/boggle/${newBoard.join("")}`)
       .then(res => res.json())
       .then(data => parseData(data))
   })
