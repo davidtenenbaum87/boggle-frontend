@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const inputBox = document.getElementById('inputBox') // word input box
   const scoreBox = document.getElementById('score') // The current game score
   const timer = document.getElementById('timer') // The timer
-  const usersURL = "http://localhost:3000/api/v1/users" // users api
-  const scoresURL = "http://localhost:3000/api/v1/scores" // scores api
+  const usersURL = "https://nameless-sea-23953.herokuapp.com/api/v1/users" // users api
+  const scoresURL = "https://nameless-sea-23953.herokuapp.com/api/v1/scores" // scores api
   const foundWords = [] // all guessed words
   let possibleWords = [] // dictionary of correct words for particular board
   let score = 0; // score
@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
     data.forEach(function(word) {
       possibleWords.push(word);
     })
-    console.log(possibleWords)
   }
 
 // populating letters for the new board
@@ -132,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // calculates and displays the countdown
   function countdown() {
-    let startingTime = 45;
+    let startingTime = 60;
     timer.innerText = startingTime;
     let gameCountdown = setInterval(function(){
       startingTime--;
@@ -168,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function() {
         alert("GAME OVER")
         getUsersFromAPI(score)
       }, 500)
-
     }
 
     // GET request from users api, invoking a function to check for existing/new users
