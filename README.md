@@ -22,5 +22,5 @@ Boggle words (https://codebox.net/pages/boggle-game-solver-and-web-service)
 Boggle's RESTful Rails API is available to view here: (https://github.com/davidtenenbaum87/boggle-backend)
 
 ## Authors
-David Tenenbaum (https://github.com/davidtenenbaum87)
-Kayla Fitzgerald (https://github.com/kaleflatbread)
+- David Tenenbaum (https://github.com/davidtenenbaum87)
+- Kayla Fitzgerald (https://github.com/kaleflatbread)
